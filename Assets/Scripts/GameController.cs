@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //Game Over Canvas
+    [Header("Game Over UI Canvas Object")]
+    public GameObject gameOverCanvas;
+
     //Platform gameobject
     [Header("Platform Object")]
     public GameObject platform;
@@ -23,17 +27,24 @@ public class GameController : MonoBehaviour
         }
     }
     //Spawn platforms function
-     void SpawnPlatforms()
+    void SpawnPlatforms()
     {
         //spawn platforms randomly on the y axis every 2.5
-       Instantiate(platform, new Vector3(Random.value * 10) - 5f, pos, 0.5f), Quaternion.identity);
-        pos
+        Instantiate(platform, new Vector3(Random.value * 10 - 5f, pos, 0.5f), Quaternion.identity);
+        pos += 2.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
 
+    //Game over function
+    public void GameOver()
+    {
+        //Game Over Canvas is active
+        gameOverCanvas.SetActive(true);
     }
 
 
