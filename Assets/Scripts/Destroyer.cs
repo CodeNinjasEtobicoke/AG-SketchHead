@@ -18,6 +18,10 @@ public class Destroyer : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Platform") {
+            Destroy(collision.gameObject);
+        }
+
         GameObject.Find("DoodleHead").SetActive(false);
         GameObject.Find("GameController").GetComponent<GameController>().GameOver();
     }
